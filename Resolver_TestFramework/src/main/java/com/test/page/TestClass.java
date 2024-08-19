@@ -1,6 +1,5 @@
 package com.test.page;
 
-import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
 
 import java.time.Duration;
 
@@ -91,16 +90,14 @@ public class TestClass {
 	@FindBy(xpath = "//*[@class=\"table table-bordered table-dark\"]")
 
 	WebElement testPageTableField;
-	
+
 	@FindBy(xpath = "//*[@class=\"table table-bordered table-dark\"]//tbody/tr")
 
 	WebElement testPageTableBodyRow;
-	
+
 	@FindBy(xpath = "//*[@class=\"table table-bordered table-dark\"]//tbody/tr[1]/td")
 
 	WebElement testPageTableBodyCol;
-	
-	
 
 	public TestClass(WebDriver driver) {
 
@@ -145,8 +142,8 @@ public class TestClass {
 				"Second list item's value is not matching");
 
 		Assert.assertEquals(testPageListItemBadge2.getText(), "6", "Badge Value  of Second List item is not matching");
-		
-		System.out.println("Badge Value is :"+testPageListItemBadge2.getText());
+
+		System.out.println("Badge Value is :" + testPageListItemBadge2.getText());
 
 		Thread.sleep(5000);
 
@@ -169,8 +166,8 @@ public class TestClass {
 
 		Assert.assertEquals(testPageDropdownMenuButton.getText().trim(), "Option 3",
 				"Value of Dropdown Menubutton item is not matching");
-		
-		System.out.println("DropDown Menubutton Value is :"+testPageDropdownMenuButton.getText().trim());
+
+		System.out.println("DropDown Menubutton Value is :" + testPageDropdownMenuButton.getText().trim());
 
 		Thread.sleep(5000);
 
@@ -187,7 +184,7 @@ public class TestClass {
 
 		Assert.assertEquals(testPageButtonPrimary.isEnabled(), true, "Primary button is not enabled");
 		Assert.assertEquals(testPageButtonSecondary.isEnabled(), false, "Secondary button is enabled");
-		
+
 		System.out.println("Both Buttons are verified");
 
 		Thread.sleep(5000);
@@ -210,7 +207,7 @@ public class TestClass {
 		testPageWaitButtonAlert.isDisplayed();
 		Assert.assertEquals(testPageWaitButtonAlert.getText().trim(), "You clicked a button!",
 				"Alert message is not displayed");
-		System.out.println("Alert message :"+testPageWaitButtonAlert.getText().trim());
+		System.out.println("Alert message :" + testPageWaitButtonAlert.getText().trim());
 		Assert.assertEquals(testPageWaitButton.isEnabled(), false, "Wait button is enabled");
 
 		Thread.sleep(5000);
@@ -232,23 +229,26 @@ public class TestClass {
 
 	}
 
-	public String getCellValueFromTable(int row,int col) {
+	public String getCellValueFromTable(int row, int col) {
 
-		String value="";
-		int rowCount=driver.findElements(By.xpath("//*[@class=\"table table-bordered table-dark\"]//tbody/tr")).size();
-		int colCount=driver.findElements(By.xpath("//*[@class=\"table table-bordered table-dark\"]//tbody/tr[1]/td")).size();
-		
-		if(row<rowCount && col<colCount)
-		{	
-			row=row+1;
-			col=col+1;
-			value=driver.findElement(By.xpath("//*[@class='table table-bordered table-dark']//tbody/tr["+row+"]/td["+col+"]")).getText();
-			System.out.println("Value inside cell is :"+value);
+		String value = "";
+		int rowCount = driver.findElements(By.xpath("//*[@class=\"table table-bordered table-dark\"]//tbody/tr"))
+				.size();
+		int colCount = driver.findElements(By.xpath("//*[@class=\"table table-bordered table-dark\"]//tbody/tr[1]/td"))
+				.size();
+
+		if (row < rowCount && col < colCount) {
+			row = row + 1;
+			col = col + 1;
+			value = driver
+					.findElement(By.xpath(
+							"//*[@class='table table-bordered table-dark']//tbody/tr[" + row + "]/td[" + col + "]"))
+					.getText();
+			System.out.println("Value inside cell is :" + value);
+		} else {
+			value = null;
 		}
-		else {
-			value=null;
-		}
-		
+
 		return value;
 
 	}

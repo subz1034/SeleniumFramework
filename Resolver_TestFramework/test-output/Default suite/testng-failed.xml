@@ -5,12 +5,7 @@
     <classes>
       <class name="com.test.logic.LogicClass">
         <methods>
-          <include name="test4"/>
-          <include name="test2"/>
-          <include name="test5"/>
-          <include name="test6"/>
           <include name="setupClass"/>
-          <include name="test3"/>
           <include name="teardown"/>
           <include name="setupTest"/>
           <include name="afterTest"/>
